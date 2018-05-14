@@ -1,0 +1,41 @@
+<DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Шифр XOR</title>
+	<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="stylesheet.css">
+		<script src="jquery-3.2.0.min.js"></script>
+	</head>
+
+	<body>
+		<header>
+			<h1>Шифр XOR</h1>
+		</header>
+
+		<article>
+			<a href="index.html" style="margin-right: 68%"><b><</b> Вернуться в меню&nbsp;</a>
+			<br style="margin-bottom: 10px">
+			
+			<textarea spellcheck="false" id="utext" cols="59" rows="15"></textarea>
+			<br style="margin-bottom: 5px">
+			
+			Ключ: <input type="text" id="key" size="25" style="margin-right: 55px;">
+			<a id="toggler">Шифровать</a>
+		</article>
+
+		<script type="text/javascript">
+			$('#toggler').click(function() {
+				var utext = $('#utext').val();
+				var key = $('#key').val();
+				var resultStr = '';
+
+				for (var i = 0; i < utext.length; i++) {
+					resultStr += String.fromCharCode(utext.charCodeAt(i) ^ key.charCodeAt(i % key.length));
+				}
+
+				$('#utext').val(resultStr);
+			});
+		</script>
+	</body>
+</html>

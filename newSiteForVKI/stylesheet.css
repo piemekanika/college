@@ -1,0 +1,180 @@
+@font-face {
+    font-family: "MyriadProRegular";
+    src: url("Myriad Pro Regular.ttf");
+}
+
+body {
+    background-color: lightgray;
+    margin: 0;
+    padding: 0;
+
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+h3 {
+    font-size: 5vw;
+    font-family: "MyriadProRegular";
+} @media screen and (min-width: 600px) {
+    h3 {
+        font-size: 32px;
+    }
+}
+
+h1 {
+    font-size: 10vw;
+    font-family: "MyriadProRegular";
+} @media screen and (min-width: 600px) {
+    h1 {
+        font-size: 40px;
+    }
+}
+
+.contact {
+    color: rgb(211, 211, 211);
+    font-size: 3vw;
+    font-family: "MyriadProRegular";
+} @media screen and (min-width: 600px) {
+    .contact {
+        font-size: 17px;
+    }
+}
+
+.blueLink {
+    font-size: 4vw;
+    font-family: "MyriadProRegular";
+    text-decoration: none;
+    color: blue;
+    padding-left: 5px;
+    padding-right: 5px;
+} @media screen and (min-width: 600px) {
+    .blueLink {
+        font-size: 25px;
+    }
+} .blueLink:hover {
+    color: white;
+    background-color: blue;
+}
+
+#page {
+    max-width: 1200px;
+    background-color: white;
+}
+
+#vkimainphoto {
+    max-width: 100%;
+    height: auto;
+    display: flex;
+}
+
+.container {
+    background-color: white;
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+}
+
+.whiteElement {
+    flex: 40%;
+    max-width: 50%;
+    border-style: solid;
+    border-color: lightgray;
+    border-width: 1px;
+    padding: 0;
+    padding-left: 2vw;
+    padding-bottom: 2vw;
+} @media screen and (max-width: 900px) {
+    .whiteElement {
+        flex: 100%;
+        border-width: 0px;
+        padding-left: 6vw;
+    }
+}
+
+#leftTop {
+    border-left-style: none;
+    border-top-style: none;
+}
+
+#rightTop {
+    border-right-style: none;
+    border-top-style: none;
+}
+
+#leftBottom {
+    border-left-style: none;
+    border-bottom-style: none;
+}
+
+#rightBottom {
+    border-right-style: none;
+    border-bottom-style: none;
+}
+
+#footer {
+    background-color: #00356B;
+}
+
+.contactElement {
+    flex: 40%;
+    max-width: 50%;
+    padding: 15px;
+    padding-left: 5vw;
+} @media screen and (max-width: 900px) {
+    .contactElement {
+        padding-left: 5vw;
+        flex: 100%;
+    }
+}
+
+.topMenu {
+    background-color: black;
+    opacity: .7;
+    display: flex;
+    height: 60px;
+}
+
+.logo {
+    color: blue;
+    font-family: "MyriadProRegular";
+    font-size: 50px;
+    font-weight: bold;
+    margin: auto;
+    user-select: none;
+    -moz-user-select: none;
+}
+
+.topMenuElement {
+    margin: auto;
+    color: white;
+    font-family: "MyriadProRegular";
+    font-size: 36px;
+} @media screen and (max-width: 900px) {
+    .topMenuElement {
+        display: none;
+    }
+}
+
+.menuIcon {
+    margin: 10px 10px;
+} @media screen and (min-width: 900px) {
+    .menuIcon {
+        display: none;
+    }
+}
+
+.bar {
+    width: 35px;
+    height: 5px;
+    background-color: white;
+    margin: 6px 6px;
+}
+
+.vkiPhoto {
+    background-image: url("vki.jpg");
+    height: 736px;
+    background-size: cover;
+} 

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Шифр подстановки</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="stylesheet.css">
+		<script src="jquery-3.2.0.min.js"></script>
+	</head>
+
+	<body>
+		<header>
+			<h1>Шифр подстановки</h1>
+		</header>
+
+		<article>
+			<a href="index.html" style="margin-right: 68%"><b><</b> Вернуться в меню&nbsp;</a>
+			<br style="margin-bottom: 10px">
+
+			<textarea spellcheck="false" id="userText" cols="59" rows="17"></textarea>
+			<input type="text" size="15" id="src">&nbsp;&nbsp;&nbsp;заменить на&nbsp;&nbsp;
+			<input type="text" size="15" id="val">
+			<br style="margin-bottom: 5px">
+
+			<a id="changer">&nbsp;Заменить&nbsp;</a>&nbsp;&nbsp;&nbsp;&nbsp;
+			<a id="swapper">&nbsp;Перевернуть&nbsp;</a>&nbsp;&nbsp;&nbsp;&nbsp;
+			<a id="cleaner">&nbsp;Очистить всё&nbsp;</a>&nbsp;&nbsp;&nbsp;&nbsp;
+			<a id="generator">&nbsp;Сгенерировать&nbsp;</a>
+			<br style="margin-bottom: 10px">
+
+			<p id="changing" style="display: none;"></p>
+		</article>
+
+		<script type="text/javascript">
+
+			var charMap = new Map();
+
+			$('#changer').click(function() {
+				var src = $('#src').val();
+				var val = $('#val').val();
+				var userText = $('#userText').val();
+
+				for (var i = 0; i < src.length; i++) 
+					charMap.set(src[i], val[i]);
+
+				var resultText = '';
+
+				for (var i = 0; i < userText.length; i++)
+					if (charMap.get(userText[i].toLowerCase()))
+						resultText += (userText[i].toLowerCase() === userText[i]) ?
+									  charMap.get(userText[i]) :
+									  charMap.get(userText[i].toLowerCase()).toUpperCase();
+					else
+						resultText += userText[i];
+
+				$('#userText').val(resultText);
+
+				var changingStr = '';
+
+				charMap.forEach(function(key, value) {
+					var spaces = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+					if (value && key)
+						changingStr += spaces + "<b>" + value + "</b>: " + key + ',';
+				});
+
+				$('#changing').fadeIn('slow');
+				$('#changing').html(changingStr);
+			});
+
+			$('#cleaner').click(function() {
+				$('#changing').html('');
+				$('#utext').val('');
+				$('#src').val('');
+				$('#val').val('');
+				$('#changing').fadeOut('slow');	
+				charMap.clear();
+			});
+
+			$('#swapper').click(function() {
+				var temp = $('#src').val();
+				$('#src').val($('#val').val());
+				$('#val').val(temp);
+			});
+
+			$('#generator').click(function() {
+				String.prototype.shuffle = function () {
+				    var a = this.split(""),
+				        n = a.length;
+
+				    for(var i = n - 1; i > 0; i--) {
+				        var j = Math.floor(Math.random() * (i + 1));
+				        var tmp = a[i];
+				        a[i] = a[j];
+				        a[j] = tmp;
+				    }
+				    return a.join("");
+				}
+
+				var alphabet = '';
+				for (var i = 0; i < 32; i++)
+					alphabet += String.fromCharCode(i + 'а'.charCodeAt());
+
+				$('#src').val(alphabet);
+				$('#val').val(alphabet.shuffle());
+
+
+			});
+			
+		</script>
+	</body>
+</html>

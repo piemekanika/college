@@ -1,0 +1,85 @@
+@font-face {
+	font-family: Micra; /*for headers*/
+	src: url(micra.ttf);
+}
+
+@font-face {
+	font-family: 'Roboto regular'; /*for text and buttons*/
+	src: url(roboto-regular.ttf);
+}
+
+body {
+	background: #C6E2FF url('dolphinBackground.png') repeat 0 0;
+	background-size: 100px 100px;
+	font-family: 'Roboto regular', sans-serif;
+}
+
+header, article {
+	text-align: center;
+	background-color: white;
+	border-radius: 10px 10px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 600px;
+	box-shadow: 8px 8px rgba(0, 0, 0, 0.3);
+}
+
+header {
+	text-align: center;
+	/*height: 50px;*/
+}
+
+article {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+h1 {
+	font-family: Micra, sans-serif;
+	font-size: 35px;
+	font-weight: normal;
+	color: black;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+ul {
+	list-style-type: none;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+li {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+a {
+    font-family: 'Roboto regular', sans-serif;
+	font-size: 18px;
+	color: deeppink;
+	cursor: pointer;
+}
+
+a:visited, a:link {
+	color: deeppink;
+	text-decoration: none;
+}
+
+a:hover {
+	color: white;
+	background-color: deeppink;
+}
+
+textarea, input {
+    resize: none;
+    font-family: 'Roboto regular', sans-serif;
+    border: 1px solid deeppink;
+    border-radius: 10px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+#changing {	
+	font-size: 20px;
+}

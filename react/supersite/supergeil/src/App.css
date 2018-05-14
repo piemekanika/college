@@ -1,0 +1,77 @@
+@keyframes menuOnHoverAnimation {
+  0% {background-color: white;}
+  100% {background-color: lightpink}
+}
+
+@keyframes spin {
+  100% {transform: rotate(5turn);}
+}
+
+@keyframes raindowText {
+  16% {color: red}
+  24% {color: orangered}
+  33% {color: orange}
+  48% {color: yellow}
+  57% {color: yellowgreen}
+  66% {color: green}
+  84% {color: blue}
+  92% {color: blueviolet}
+  100% {color: purple}
+}
+
+.App {
+  text-align: center;
+}
+
+.menuItem, .menuItemRight {
+  padding: 20px;
+  border: 1px;
+  border-style: solid;
+  border-color: black;
+}
+
+.menuItem {
+  border-right: 0px;
+}
+
+.menuItem:hover, .menuItemRight:hover {
+  animation-name: menuOnHoverAnimation;
+  animation-duration: 1s;
+  cursor: pointer;
+}
+
+.spinner {
+  width: 300px;
+  height: 300px;
+  margin-top: 100px;
+  animation: spin 3s linear infinite;
+  animation-play-state: paused; 
+}
+
+.spinner:hover {
+  animation-play-state: running;
+}
+
+h1 {
+  animation: raindowText 1s infinite;
+  animation-play-state: paused; 
+}
+
+h1:hover {
+  animation-play-state: running;
+}
+
+.menu {
+  align-content: center;
+  padding: 50px;
+}
+
+.pageContent {
+  margin: auto;
+  max-width: 800px;
+}
+
+#helpPage {
+  text-align: left;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Шифр Цезаря</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="stylesheet.css">
+		<script src="jquery-3.2.0.min.js"></script>
+	</head>
+
+	<body>
+		<header>
+			<h1>Шифр Цезаря</h1>
+		</header>
+
+		<article>
+			<a href="index.html" style="margin-right: 68%"><b><</b> Вернуться в меню&nbsp;</a>
+			<br style="margin-bottom: 10px">
+			
+			<textarea spellcheck="false" id="utext" cols="59" rows="15"></textarea>
+			<br style="margin-bottom: 5px">
+
+			<a id='encode' style="margin-right: 50px;">&nbsp;Шифровать&nbsp;</a>&nbsp;&nbsp;
+			Ключ: <input type="text" id="key" size="5">&nbsp;&nbsp;
+			<a id='decode' style="margin-left: 50px;">&nbsp;Дешифровать&nbsp;</a>
+			<br style="margin-bottom: 10px;">
+
+			Алфавит: <input type="text" id="ualphabet" size="35">&nbsp;&nbsp;
+			<a id="alphabetEngler">&nbsp;Англ.&nbsp;</a>&nbsp;&nbsp;
+			<a id="alphabetRuser">&nbsp;Рус.&nbsp;</a>
+		</article>
+
+		<script type="text/javascript">			
+
+			var alphabet = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя';
+
+			$(function() {
+				$('#ualphabet').val(alphabet);								
+			});
+
+			function caesar(inputStr, key) {
+				function isSkipSymbol(symbol) {
+					return (alphabet.indexOf(symbol.toLowerCase()) == -1);
+				}
+
+				function symbEncode(symbol, key) {
+				  var symbolCode = symbol.charCodeAt(0) - alphabet[0].charCodeAt(0);
+
+				  symbolCode += key;
+
+				  if (symbolCode >= 0)
+				    symbolCode %= alphabet.length - 1;
+				  else
+				    symbolCode = alphabet.length - 1 - (-1)*(symbolCode % alphabet.length);
+
+				  return String.fromCharCode(symbolCode + alphabet[0].charCodeAt(0));
+				}
+
+				var resultStr = '';
+				
+				key %= alphabet.length;
+
+				for (var i = 0; i < inputStr.length; i++) {
+					if (isSkipSymbol(inputStr[i]))
+						resultStr += inputStr[i];
+					else if (inputStr[i] === inputStr[i].toLowerCase())
+						resultStr += symbEncode(inputStr[i], key);
+					else
+						resultStr += symbEncode(inputStr[i].toLowerCase(), key).toUpperCase();
+				}
+
+				return resultStr;
+			}
+
+			function validKey(key) {
+				return Number.isInteger(key);
+			}
+
+			$('#encode').click(function() {
+				var key = parseInt($('#key').val());
+				
+				if (validKey(key)) {
+					var utext = $('#utext').val();
+					$('#utext').val(caesar(utext, key));
+				} else
+					alert('Ключ может быть только целым числом');
+			});
+
+			$('#decode').click(function() {
+				var key = -1 * parseInt($('#key').val());
+
+				if (validKey(key)) {
+					var utext = $('#utext').val();
+					$('#utext').val(caesar(utext, key));
+				} else
+					alert('Ключ может быть только целым числом');
+			});
+
+			$('#alphabetRuser').click(function() {
+				alphabet = '';
+				for (var i = 0; i < 32; i++) {
+					alphabet += String.fromCharCode(i + 'а'.charCodeAt());
+					if (i == 5) alphabet += 'ё';
+				}
+
+				$('#ualphabet').val(alphabet);
+			});
+
+			$('#alphabetEngler').click(function() {
+				alphabet = '';
+				for (var i = 0; i < 26; i++)
+					alphabet += String.fromCharCode(i + 'a'.charCodeAt());
+
+				$('#ualphabet').val(alphabet);
+			});
+		</script>
+	</body>
+</html>
