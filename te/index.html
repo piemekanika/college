@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+
+    <body onkeypress="return myKeyPress(event)" >
+        <a href="#" id="link">a</a>
+
+        <script type="text/javascript">
+            function myKeyPress(e){
+              var keynum;
+          
+              if(window.event) { // IE                    
+                keynum = e.keyCode;
+              } else if(e.which){ // Netscape/Firefox/Opera                   
+                keynum = e.which;
+              }
+              
+              if (String.fromCharCode(keynum) == document.getElementById('link').innerHTML)
+                alert("true");
+
+              console.log(document.getElementById('link').innerHTML);
+            }
+          </script>
+    </body>
+</html>

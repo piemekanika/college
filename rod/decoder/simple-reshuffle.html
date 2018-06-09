@@ -1,4 +1,3 @@
-<DOCTYPE html>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,17 +13,42 @@
 		</header>
 
 		<article>
-			<a href="index.html" style="margin-right: 68%"><b><</b> Вернуться в меню&nbsp;</a>
+			<a href="index.html" style="margin-right: 68%"><b></b>< Вернуться в меню&nbsp;</a>
 			<br style="margin-bottom: 10px">
 			
 			<textarea spellcheck="false" id="utext" cols="59" rows="15"></textarea>
 			<br style="margin-bottom: 5px">
 
-
+			<a id='encode' style="margin-right: 50px;">&nbsp;Шифровать&nbsp;</a>
 		</article>
 
 		<script type="text/javascript">
-			//TODO
+
+			$('#encode').click(function() {
+				var uText = $('#utext').val();		
+				var newText = '';		
+
+				for (var i = 0; i < uText.length; i += 5) {
+					
+					switch (uText.length - 1 - i) {
+						case 1: uText += ' '; break;
+						case 2: uText += ' '; uText += ' '; break;
+						case 3: uText += ' '; uText += ' '; uText += ' '; break;
+						case 4: uText += ' '; uText += ' '; uText += ' '; uText += ' '; break;						
+					}
+										
+					newText += uText[i + 2];
+					newText += uText[i + 0];
+					newText += uText[i + 4];
+					newText += uText[i + 3];
+					newText += uText[i + 1];
+
+					console.log(uText);
+				}
+
+				$('#utext').val(newText);
+			});
+
 		</script>
 	</body>
 </html>
